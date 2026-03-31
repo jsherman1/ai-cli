@@ -1,0 +1,14 @@
+# Environments
+.venv/
+env/
+
+# Python caching & builds
+__pycache__/
+*.pyc
+build/
+dist/
+*.egg-info/
+
+# Your local CLI config/secrets
+.ai-cli/
+.env
