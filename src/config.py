@@ -19,13 +19,13 @@ def configure_cli():
             config = json.load(f)
 
     # Standard API Keys
-    config["GEMINI_API_KEY"] = typer.prompt("Gemini API Key", default=config.get("GEMINI_API_KEY", ""), hide_input=True)
+    config["GEMINI_API_KEY"] = typer.prompt("Gemini API Key (Skip if using Vertex)", default=config.get("GEMINI_API_KEY", ""), hide_input=True)
     config["ANTHROPIC_API_KEY"] = typer.prompt("Anthropic API Key (Skip if using Vertex)", default=config.get("ANTHROPIC_API_KEY", ""), hide_input=True)
-    config["OPENAI_API_KEY"] = typer.prompt("OpenAI API Key", default=config.get("OPENAI_API_KEY", ""), hide_input=True)
+    config["OPENAI_API_KEY"] = typer.prompt("OpenAI API Key (Skip if using Vertex)", default=config.get("OPENAI_API_KEY", ""), hide_input=True)
     
     # Vertex AI Configuration
     typer.secho("\n--- Vertex AI Setup (For GCP Hosted Models) ---", fg=typer.colors.CYAN)
-    config["VERTEXAI_PROJECT"] = typer.prompt("Vertex AI Project ID", default=config.get("VERTEXAI_PROJECT", "my-claude-project-id"))
+    config["VERTEXAI_PROJECT"] = typer.prompt("Vertex AI Project ID", default=config.get("VERTEXAI_PROJECT", "my-vertex-project-id"))
     config["VERTEXAI_LOCATION"] = typer.prompt("Vertex AI Location (e.g., us-east5, us-central1)", default=config.get("VERTEXAI_LOCATION", "us-east5"))
 
     with open(CONFIG_FILE, "w") as f:
